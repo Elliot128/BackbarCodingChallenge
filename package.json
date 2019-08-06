@@ -1,0 +1,26 @@
+{
+  "engines": {
+    "node": "10.x"
+  },
+  "name": "backbarcodingchallenge",
+  "version": "1.0.0",
+  "description": "A list app code challenge for Backbar",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elliot128/BackbarCodingChallenge.git"
+  },
+  "author": "Elliot Kozil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elliot128/BackbarCodingChallenge/issues"
+  },
+  "homepage": "https://github.com/Elliot128/BackbarCodingChallenge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
