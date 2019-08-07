@@ -1,14 +1,9 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const port = process.env.PORT || 4000
+const http = require('http');
+const app = require('./app');
 
-app.get('/', function(req, res) {
-    console.log('Get /')
-    res.send('Got /')
-});
+const port = process.env.PORT || 3000;
 
-app.listen(port, function(){
+app.listen(port, () => {
     console.log(`Express listening on port ${port}`);
-    console.log(`Nodejs version ${process.version}`)
+    console.log(`Nodejs version ${process.version}`);
 });
