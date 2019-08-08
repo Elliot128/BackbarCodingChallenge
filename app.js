@@ -1,11 +1,12 @@
 const express = require('express');
-
+const path = require('path');
 const app = express();
 
 app.get('/', (req, res) => {
-    console.log('Get /');
-    res.send('Got /');
+    res.sendFile(
+        path.join(__dirname, '/frontend/index.html')
+    );
 });
 
 
-module.exports = app
+module.exports = app;
