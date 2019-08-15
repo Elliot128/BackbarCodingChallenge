@@ -4,20 +4,25 @@
   </div>
 </template>
 
-<script>
+<script lang="js">
+import { mapState, mapMutations } from 'Vuex'; 
+import Constants  from './constants';
+const { MUTATION_TYPES } = Constants;
+
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Hello World'
-    }
-  },
+  computed: mapState([
+    'msg'
+  ]),
+  methods: mapMutations([
+      MUTATION_TYPES.SET_MSG
+  ]),
   created () {
       setTimeout(() => {
-          this.msg = 'Goodbye World';
-      }, 5000)
+          this[MUTATION_TYPES.SET_MSG]('Goodbye World');
+      }, 5000);
   }
-}
+};
 </script>
 
 <style lang="css">
