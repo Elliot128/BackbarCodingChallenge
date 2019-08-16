@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Elliot128/BackbarCodingChallenge#readme",
   "dependencies": {
     "babel-eslint": "^10.0.2",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^6.1.0",
     "eslint-plugin-vue": "^5.2.3",
     "express": "^4.17.1",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",
+    "babel-core": "^6.26.3",
     "vue-template-compiler": "^2.6.10"
   }
 }
