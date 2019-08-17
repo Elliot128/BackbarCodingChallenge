@@ -45,5 +45,9 @@ export default {
 <style lang="css">
   #app ul {
     list-style-type: none;
+    padding-inline-start: 0;
+  }
+  #app div.msg-entry-container {
+    display: inline-block;
   }
 </style>
