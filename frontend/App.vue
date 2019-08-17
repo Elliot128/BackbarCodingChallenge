@@ -20,13 +20,14 @@ export default {
     'code',
     'msgs',
   ]),
-  methods: mapActions([
-      ACTION_TYPES.LOAD_CODE,
-      ACTION_TYPES.LOAD_MSGS,
-  ]),
+  methods: mapActions({
+      'LOAD_CODE': ACTION_TYPES.LOAD_CODE,
+      'LOAD_MSGS': ACTION_TYPES.LOAD_MSGS,
+      'ADD_MSG': ACTION_TYPES.ADD_MSG,
+  }),
   created () {
-    this[ACTION_TYPES.LOAD_CODE]();
-    this[ACTION_TYPES.LOAD_MSGS]();
+    this['LOAD_CODE']();
+    this['LOAD_MSGS']();
   }
 };
 </script>
