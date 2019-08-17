@@ -27,6 +27,9 @@ app.get('/', (req, res) => {
     res.sendFile(
         path.join(__dirname, 'dist/index.html')
     );
+    console.log(req.query.code);
+    console.log(req.session.code);
+
 });
 
 const msgStore = {
