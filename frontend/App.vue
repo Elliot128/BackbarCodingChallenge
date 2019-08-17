@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
+    <h1>{{ code }}</h1>
+    <ul>
+      <li v-for="msg in msgs" :key="msg" >
+        Data: {{ msg }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="js">
-import { mapState, mapMutations } from 'Vuex'; 
+import { mapState, mapActions } from 'Vuex'; 
 import Constants  from './constants';
-const { MUTATION_TYPES } = Constants;
+const { ACTION_TYPES } = Constants;
 
 export default {
   name: 'app',
   computed: mapState([
-    'msg'
+    'code',
+    'msgs',
   ]),
-  methods: mapMutations([
-      MUTATION_TYPES.SET_MSG
+  methods: mapActions([
+      ACTION_TYPES.LOAD_CODE,
+      ACTION_TYPES.LOAD_MSGS,
   ]),
   created () {
-      setTimeout(() => {
-          this[MUTATION_TYPES.SET_MSG]('Goodbye World');
-      }, 5000);
+    this[ACTION_TYPES.LOAD_CODE]();
+    this[ACTION_TYPES.LOAD_MSGS]();
   }
 };
 </script>
 
 <style lang="css">
-  #app {
-    color: #5e03d4;
+  #app ul {
+    list-style-type: none;
   }
 </style>
