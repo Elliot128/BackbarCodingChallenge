@@ -12,11 +12,6 @@ app.use(session({
     secret: 'session secret',
     saveUninitialized: true,
     resave: true,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production'
-            ? true
-            : false
-    },
 }));
 
 app.get('/', (req, res) => {
