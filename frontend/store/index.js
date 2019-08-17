@@ -13,7 +13,7 @@ urlParams.delete('code');
 window.history.replaceState(
     null,
     window.document.title,
-    `${urlParams.toString() ? `?${urlParams}` : ''}`
+    `${window.location.pathname}${urlParams}`
 );
 
 const Api = Axios.create({
