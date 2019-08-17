@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Constants from '../constants';
+import Axios from 'axios';
 
 const { MUTATION_TYPES } = Constants;
 
@@ -14,6 +15,10 @@ window.history.replaceState(
     window.document.title,
     `${urlParams.toString() ? `?${urlParams}` : ''}`
 );
+
+const Api = Axios.create({
+    baseURL: window.location.origin
+});
 
 export default new Vuex.Store({
     state: {
