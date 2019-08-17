@@ -6,6 +6,10 @@
         Data: {{ msg }}
       </li>
     </ul>
+    <div class="msg-entry-container">
+      <input v-model=msg @keydown.enter="ADD_MSG(msg)" type="text" name="msg">
+      <button @click=ADD_MSG(msgInput)>Save Entry</button>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,11 @@ const { ACTION_TYPES } = Constants;
 
 export default {
   name: 'app',
+  data() {
+    return {
+      msg: '',
+    }
+  },
   computed: mapState([
     'code',
     'msgs',
