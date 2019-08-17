@@ -6,6 +6,15 @@ const { MUTATION_TYPES } = Constants;
 
 Vue.use(Vuex);
 
+// remove "code" url param
+const urlParams = new URLSearchParams(window.location.search);
+urlParams.delete('code');
+window.history.replaceState(
+    null,
+    window.document.title,
+    `${urlParams.toString() ? `?${urlParams}` : ''}`
+);
+
 export default new Vuex.Store({
     state: {
         msg: 'Hello World'
