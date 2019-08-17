@@ -45,4 +45,8 @@ app.post('/messages/:msg', (req, res) => {
     res.sendStatus(200);
 });
 
+app.get('/code', (req, res) => {
+    res.send(req.session.code)
+});
+
 module.exports = app;
