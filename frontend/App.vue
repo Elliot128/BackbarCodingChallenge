@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h1>{{ code }}</h1>
+    <h1>Backbar Coding Challenge</h1>
+    <h2>{{ code }}</h2>
     <ul>
       <li v-for="msg in msgs" :key="msg" >
         Data: {{ msg }}
