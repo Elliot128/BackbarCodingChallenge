@@ -26,5 +26,14 @@ app.get('/', (req, res) => {
     );
 });
 
+const msgStore = {
+    getMsgs: code => msgStore[code] || [],
+    putMsg: (code, msg) => {
+        if (!msgStore[code]) {
+            msgStore[code] = []
+        }
+        msgStore[code].push(msg);
+    }
+};
 
 module.exports = app;
