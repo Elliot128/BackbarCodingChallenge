@@ -15,8 +15,8 @@
 </template>
 
 <script lang="js">
+import { mapState, mapActions } from 'vuex'; 
 import Constants  from './constants';
-import { mapState, mapActions } from 'Vuex'; 
 const { ACTION_TYPES } = Constants;
 
 export default {
