@@ -20,9 +20,10 @@ app.use(session({
 }));
 
 app.get('/', (req, res) => {
-    req.session.code = req.query.code 
-        ? req.query.code 
-        : (crypto.randomBytes(16)).toString('hex');
+    req.session.code = 
+        req.query.code ||
+        req.session.code ||
+        (crypto.randomBytes(16)).toString('hex');
     res.sendFile(
         path.join(__dirname, 'dist/index.html')
     );
