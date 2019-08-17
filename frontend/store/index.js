@@ -26,13 +26,13 @@ export default new Vuex.Store({
         msgs: [],
     },
     actions: {
-        async [ACTION_TYPES.GET_CODE] ({ commit }) {
-            const code = await Api.get('/code');
-            commit(MUTATION_TYPES.SET_CODE, code);
+        async [ACTION_TYPES.LOAD_CODE] ({ commit }) {
+            const { data } = await Api.get('/code');
+            commit(MUTATION_TYPES.SET_CODE, data);
         },
-        async [ACTION_TYPES.GET_MSGS] ({ commit }) {
-            const msgs = await Api.get('/messages');
-            commit(MUTATION_TYPES.SET_MSGS, msgs);
+        async [ACTION_TYPES.LOAD_MSGS] ({ commit }) {
+            const { data } = await Api.get('/messages');
+            commit(MUTATION_TYPES.SET_MSGS, data);
         },
         async [ACTION_TYPES.ADD_MSG] ({ commit }, payload) {
             await Api.post(`/messages/${payload}`);
