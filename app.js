@@ -36,4 +36,13 @@ const msgStore = {
     }
 };
 
+app.get('/messages', (req, res) => {
+    res.send(msgStore.getMsgs(req.session.code));
+});
+
+app.post('/messages/:msg', (req, res) => {
+    msgStore.putMsg(req.session.code, req.params.msg)
+    res.sendStatus(200);
+});
+
 module.exports = app;
