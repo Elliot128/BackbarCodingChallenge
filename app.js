@@ -4,10 +4,6 @@ const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
 
-app.use('/dist',
-    express.static(path.join(__dirname, 'dist'))
-);
-
 const appSession = session({
     secret: 'session secret',
     saveUninitialized: true,
@@ -21,6 +17,21 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
 }
 
+const msgStore = {
+    getMsgs: code => msgStore[code] || [],
+    putMsg: (code, msg) => {
+        if (!msgStore[code]) {
+            msgStore[code] = [];
+        }
+        msgStore[code].push(msg);
+    }
+};
+
+// statics
+app.use('/dist',
+    express.static(path.join(__dirname, 'dist'))
+);
+
 app.use(appSession);
 
 app.get('/', (req, res) => {
@@ -32,16 +43,6 @@ app.get('/', (req, res) => {
         path.join(__dirname, 'dist/index.html')
     );
 });
-
-const msgStore = {
-    getMsgs: code => msgStore[code] || [],
-    putMsg: (code, msg) => {
-        if (!msgStore[code]) {
-            msgStore[code] = []
-        }
-        msgStore[code].push(msg);
-    }
-};
 
 app.get('/messages', (req, res) => {
     res.send(msgStore.getMsgs(req.session.code));
