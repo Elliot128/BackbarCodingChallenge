@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Backbar Coding Challenge</h1>
-    <h2>{{ code }}</h2>
+    <h2>Your code: <a :href="`/?code=${code}`">{{ code }}</h2>
     <ul>
       <li v-for="msg in msgs" :key="msg">
         Data: {{ msg }}
