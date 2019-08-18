@@ -8,11 +8,20 @@ app.use('/dist',
     express.static(path.join(__dirname, 'dist'))
 );
 
-app.use(session({
+const appSession = session({
     secret: 'session secret',
     saveUninitialized: true,
     resave: true,
-}));
+});
+
+if (process.env.NODE_ENV === 'production') {
+    appSession.cookie = {
+        secure: true,
+    };
+    app.set('trust proxy', 1);
+}
+
+app.use(appSession);
 
 app.get('/', (req, res) => {
     req.session.code = 
