@@ -3,14 +3,14 @@
     <h1>Backbar Coding Challenge</h1>
     <h2>{{ code }}</h2>
     <ul>
-      <li v-for="msg in msgs" :key="msg" >
+      <li v-for="msg in msgs" :key="msg">
         Data: {{ msg }}
       </li>
     </ul>
-    <div class="msg-entry-container">
-      <input v-model=msg @keydown.enter="SendMsg()" type="text" name="msg">
-      <button @click="SendMsg()">Save Entry</button>
-    </div>
+    <form @submit.prevent="SendMsg()" autocomplete="off" class="msg-entry-form">
+      <input v-model=msg type="text" name="msg">
+      <input type="submit">
+    </form>
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
     list-style-type: none;
     padding-inline-start: 0;
   }
-  #app div.msg-entry-container {
+  #app div.msg-entry-form {
     display: inline-block;
   }
 </style>
