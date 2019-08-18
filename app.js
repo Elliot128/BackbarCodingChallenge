@@ -59,12 +59,12 @@ app.get('/messages', (req, res) => {
 });
 
 app.post('/messages/:msg', (req, res) => {
-    msgStore.putMsg(req.session.code, req.params.msg)
+    msgStore.putMsg(req.session.code, req.params.msg);
     res.sendStatus(200);
 });
 
 app.get('/code', (req, res) => {
-    res.send(req.session.code)
+    res.send(req.session.code);
 });
 
 module.exports = app;

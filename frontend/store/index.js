@@ -7,14 +7,6 @@ const { ACTION_TYPES, MUTATION_TYPES } = Constants;
 
 Vue.use(Vuex);
 
-// remove "code" url param
-const urlParams = new URLSearchParams(window.location.search);
-urlParams.delete('code');
-window.history.replaceState(
-    null,
-    window.document.title,
-    `${window.location.pathname}${urlParams}`
-);
 
 const Api = Axios.create({
     baseURL: window.location.origin
