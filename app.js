@@ -4,6 +4,16 @@ const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
 
+const msgStore = {
+    getMsgs: code => msgStore[code] || [],
+    putMsg: (code, msg) => {
+        if (!msgStore[code]) {
+            msgStore[code] = [];
+        }
+        msgStore[code].push(msg);
+    }
+};
+
 const appSession = session({
     secret: 'session secret',
     saveUninitialized: true,
@@ -17,15 +27,15 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
 }
 
-const msgStore = {
-    getMsgs: code => msgStore[code] || [],
-    putMsg: (code, msg) => {
-        if (!msgStore[code]) {
-            msgStore[code] = [];
-        }
-        msgStore[code].push(msg);
+// redirect all traffic to https
+app.use((req, res, next) => {
+    if (process.env.NODE_ENV === 'production' &&
+        req.headers['x-forwarded-proto'] != 'https') {
+        res.redirect('https://' + req.headers.host + req.url);
+    } else {
+        next();
     }
-};
+});
 
 // statics
 app.use('/dist',
